@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список тайтлов</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-6 bg-gray-100">
+<div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Список тайтлов</h1>
+        <div class="text-right">
+            <a th:href="@{/api/titles-excel(query=${query})}" target="_blank"
+               class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
+                Скачать Excel
+            </a>
+        </div>
+    </div>
+
+    <table class="mt-4 w-full border-collapse border border-gray-300">
+        <thead>
+        <tr class="bg-gray-200">
+            <th class="border border-gray-300 p-2">Название</th>
+            <th class="border border-gray-300 p-2">Сезон</th>
+            <th class="border border-gray-300 p-2">Описание</th>
+            <th class="border border-gray-300 p-2">Ссылка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="title : ${titles}" class="hover:bg-gray-100">
+            <td class="border border-gray-300 p-2" th:text="${title.name}"></td>
+            <td class="border border-gray-300 p-2" th:text="${title.season}"></td>
+            <td class="border border-gray-300 p-2" th:text="${title.description}"></td>
+            <td class="border border-gray-300 p-2">
+                <a th:href="${title.link}" class="text-blue-500 hover:underline" target="_blank">Перейти</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="mt-4 flex justify-center">
+        <a href="/" target="_self"
+           class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+            На главную
+        </a>
+    </div>
+</div>
+</body>
+</html>
