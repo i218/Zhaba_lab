@@ -30,7 +30,7 @@ public class ALSiteParserService {
 
         var titlesToSave = new ArrayList<Title>();
 
-        var titleSearchResult = new ArrayList<Title>(repos.findAllByNameContainsIgnoreCase(search));
+        var titleSearchResult = new ArrayList<>(repos.findAllByNameContainsIgnoreCase(search));
 
         var alphpbDocument = Jsoup.connect(baseUrl + "/pages/alphabet.php").get();
 
