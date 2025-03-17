@@ -28,11 +28,9 @@ public class ALSiteParserService {
     @SneakyThrows
     public List<Title> findTitles(String search) {
 
-        var titleSearchResult = new ArrayList<Title>();
-
         var titlesToSave = new ArrayList<Title>();
 
-        titleSearchResult.addAll(repos.findAllByNameContainsIgnoreCase(search));
+        var titleSearchResult = new ArrayList<Title>(repos.findAllByNameContainsIgnoreCase(search));
 
         var alphpbDocument = Jsoup.connect(baseUrl + "/pages/alphabet.php").get();
 
